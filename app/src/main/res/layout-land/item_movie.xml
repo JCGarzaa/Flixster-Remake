@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
     <ImageView
         android:id="@+id/ivPoster"
         android:layout_width="350dp"
@@ -32,4 +33,5 @@
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/ivPoster"
         tools:text="Professor Albus Dumbledore knows the powerful, dark wizard Gellert Grindelwald is moving to seize control of the wizarding world. Unable to stop him alone, he entrusts magizoologist Newt Scamander to lead an intrepid team of wizards and witches. They soon encounter an array of old and new beasts as they clash with Grindelwald's growing legion of followers.&quot;, " />
+
 </RelativeLayout>

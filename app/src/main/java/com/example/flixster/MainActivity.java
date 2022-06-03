@@ -23,8 +23,10 @@ import okhttp3.Headers;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String NOW_PLAYING_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+    public String NOW_PLAYING_URL;
     public static final String TAG = "MainActivity";
+
+
 
     List<Movie> movies;
 
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         RecyclerView rvMovies = findViewById(R.id.rvMovies);
         movies = new ArrayList<>();
+
+        NOW_PLAYING_URL = String.format("https://api.themoviedb.org/3/movie/now_playing?api_key=%s", getString(R.string.movie_api_key));
 
         // Create the adapter
         MovieAdapter movieAdapter = new MovieAdapter(this, movies);
@@ -64,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
                 Log.d(TAG, "onFailure");
             }
+
         });
     }
 }

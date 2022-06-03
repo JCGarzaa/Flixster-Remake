@@ -43,10 +43,17 @@ tools:context=".MovieDetailsActivity">
     <ImageView
         android:id="@+id/Image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="262dp"
         android:layout_below="@+id/tvOverview"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="0dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginBottom="404dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/player"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Image"
+        android:layout_marginTop="-327dp" />
 </RelativeLayout>
