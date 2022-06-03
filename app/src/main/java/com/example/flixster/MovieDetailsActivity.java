@@ -13,6 +13,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.flixster.adapters.MovieAdapter;
@@ -66,16 +67,16 @@ public class MovieDetailsActivity extends YouTubeBaseActivity {
         tvTitle.setText(movie.getTitle());
         tvOverview.setText(movie.getOverview());
 
+        int radius = 30; // corner radius, higher value = more rounded
         Glide.with(this)
-                .load(movie.getPosterPath())
+                .load(movie.getBackdropPath())
+                .centerCrop() // scale image to fill the entire ImageView
+                .transform(new RoundedCorners(radius))
                 .into(Img);
-
 
         // rating is from 0-10 so convert to 0-5
         float voteAvg = (float) movie.getVoteAverage();
         rbVoteAverage.setRating(voteAvg / 2.0f);
-
-
 
         // TEMPORARY TODO: replace with video id
         final String videoId = movie.getVideo();
@@ -85,26 +86,6 @@ public class MovieDetailsActivity extends YouTubeBaseActivity {
         // resolve the player view from the layout
         YouTubePlayerView playerView = (YouTubePlayerView) findViewById(R.id.player);
 
-
-
-//        // initialize with API key stored in secrets.xml
-//        playerView.initialize(getString(R.string.youtube_api_key), new YouTubePlayer.OnInitializedListener() {
-//            @Override
-//            public void onInitializationSuccess(YouTubePlayer.Provider provider,
-//                                                YouTubePlayer youTubePlayer, boolean b) {
-//                // do any work here to cue video, play video, etc.
-//                Log.i("MVTRAiler", "made it here");
-//                youTubePlayer.cueVideo(videoId);
-//                Log.i("MVTrailer", "done with cue");
-//            }
-//
-//            @Override
-//            public void onInitializationFailure(YouTubePlayer.Provider provider,
-//                                                YouTubeInitializationResult youTubeInitializationResult) {
-//                // log the error
-//                Log.e("MovieTrailerActivity", "Error initializing YouTube player");
-//            }
-//        });
 
 
         AsyncHttpClient client = new AsyncHttpClient();
